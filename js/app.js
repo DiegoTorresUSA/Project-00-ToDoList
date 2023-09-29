@@ -7,7 +7,7 @@ const taskInput = document.querySelector("#input-task")
 //EVENTOS
 form.addEventListener("submit", addTask);
 
- 
+
 //AGREGAR TAREAS
 function addTask(event){
     event.preventDefault();
@@ -26,11 +26,3 @@ function addTask(event){
         alert("Debe rellenar el input");
     }
 }
-
-
-//ELIMINAR TAREAS
-
-//ALMACENAR EN LOCALSTORAGE
-
-
-//CARGAR EN LOCALSTORAGE
