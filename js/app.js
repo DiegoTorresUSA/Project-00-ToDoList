@@ -19,11 +19,28 @@ taskConteiner.addEventListener("click", crossOut);
 // AGREGAR TAREAS
 function addTask(event) {
     event.preventDefault();
-    taskList.push({ task: taskInput.value, estado: "pendiente" }); //el "estado" dentro del objeto lo hice para usarlo en el tachado de las tareas listas pero al final no lo usé, ver si aplica usarlo
-    taskInput.value = ""; // Limpia el campo de entrada
-    localStorage.setItem("lista", JSON.stringify(taskList));
-    mostrarTarea();
-    id++;
+    let inputLen = taskInput.value.length;
+    console.log("inputLen", inputLen);
+    if (inputLen <= 0){
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'La tarea no puede estar vacia!',
+      });
+    }else{
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'La tarea ha sido guardada',
+        showConfirmButton: false,
+        timer: 900
+      })
+      taskList.push({ task: taskInput.value, estado: "pendiente" }); //el "estado" dentro del objeto lo hice para usarlo en el tachado de las tareas listas pero al final no lo usé, ver si aplica usarlo
+      taskInput.value = ""; // Limpia el campo de entrada
+      localStorage.setItem("lista", JSON.stringify(taskList));
+      mostrarTarea();
+      id++;
+    }
   };
   
 //MOSTRAR TAREAS EN LA PAGINA (ATRAVÉS DEL LOCALSTORAGE)
